@@ -61,7 +61,7 @@ class ProductDAO extends DAO
   {
     $products = null;
     try {
-      $sql = "SELECT * FROM product";
+      $sql = "SELECT * FROM tb_product";
       $req = $this->PDO->prepare($sql);
       $req->execute();
       $result = $req->fetchAll();
