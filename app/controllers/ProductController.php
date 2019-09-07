@@ -26,7 +26,7 @@ class ProductController extends CoreController
 
     $products = (new ProductDAO())->queryAll();
 
-    if ($products) {
+    if (!empty($products)) {
       $this->addData("products", $products);
       $this->loadView("v_products");
     } else {

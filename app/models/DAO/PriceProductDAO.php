@@ -66,7 +66,7 @@ class PriceProductDAO extends DAO
     return $priceProduct;
   }
 
-  public function queryAll()
+  public function queryAlll()
   {
     $products = null;
     try {

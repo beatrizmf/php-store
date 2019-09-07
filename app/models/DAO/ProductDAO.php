@@ -45,11 +45,16 @@ class ProductDAO extends DAO
   {
     $product = null;
     try {
-      $sql = "SELECT * FROM product WHERE product.id = :id";
+      $sql = "SELECT * FROM tb_product WHERE tb_product.id = :id";
       $req = $this->PDO->prepare($sql);
       $req->bindValue(":id", $id);
       $req->execute();
-      $product = $req->fetch();
+      $result = $req->fetch();
+
+      if (!empty($result)) {
+        $price = $this->getCurrentPrice($result['id']);
+        $product = (new Product($result['id'], $result['name'], $price));
+      }
     } catch (Exception $error) {
       echo $error->getMessage();
     }
@@ -65,15 +70,34 @@ class ProductDAO extends DAO
       $req = $this->PDO->prepare($sql);
       $req->execute();
       $result = $req->fetchAll();
-      
-      $products = array();
-      foreach ($result as $product) {
-        array_push($products, new Product($product['id'], $product['name']));
+
+      if (!empty($result)) {
+        $products = array();
+        foreach ($result as $product) {
+          $price = $this->getCurrentPrice($product['id']);
+          array_push($products, new Product($product['id'], $product['name'], $price));
+        }
       }
     } catch (Exception $error) {
       echo $error->getMessage();
     }
 
     return $products;
+  }
+
+  public function getCurrentPrice($id)
+  {
+    $priceProduct = null;
+    try {
+      $sql = "SELECT price_sale FROM tb_price_product WHERE tb_price_product.tb_product_id = :id AND tb_price_product.status = 1";
+      $req = $this->PDO->prepare($sql);
+      $req->bindValue(":id", $id);
+      $req->execute();
+      $priceProduct = $req->fetch()["price_sale"];
+    } catch (Exception $error) {
+      echo $error->getMessage();
+    }
+
+    return $priceProduct;
   }
 }

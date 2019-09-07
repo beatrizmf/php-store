@@ -1,7 +1,9 @@
-<?php
+<p>
+id: <?= $data['product']->getId(); ?> 
+/ 
+<?= $data['product']->getName(); ?>
+/
+R$ <?= $data['product']->getPrice(); ?>
+</p>
 
-print_r($data["product"]);
-
-?>
-
-<a href="<?= BASE_URL.'/products' ?>">back</a>
+<a href="<?= BASE_URL . '/products' ?>">back</a>
