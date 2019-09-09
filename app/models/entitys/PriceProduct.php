@@ -24,17 +24,17 @@ class PriceProduct
     return $this->id;
   }
 
-  public function getproductId()
+  public function getProductId()
   {
     return $this->id;
   }
 
-  public function getpricePurchase()
+  public function getPricePurchase()
   {
     return $this->id;
   }
 
-  public function getpriceSale()
+  public function getPriceSale()
   {
     return $this->id;
   }
@@ -54,17 +54,17 @@ class PriceProduct
     $this->id = $id;
   }
 
-  public function setproductId($id)
+  public function setProductId($id)
   {
     $this->id = $id;
   }
 
-  public function setpricePurchase($id)
+  public function setPricePurchase($id)
   {
     $this->id = $id;
   }
 
-  public function setpriceSale($id)
+  public function setPriceSale($id)
   {
     $this->id = $id;
   }

@@ -5,10 +5,10 @@ class CoreController
 
   private $dataView = array();
 
-  protected function loadModel($model)
+  protected function loadDAO($DAO)
   {
-    // DAO alredy require Product Model
-    require_once PATH_APP . "/models/DAO/" . $model . "DAO.php";
+    // Model alredy require
+    require_once PATH_APP . "/models/DAO/" . $DAO . ".php";
   }
 
   protected function addData($data, $value)

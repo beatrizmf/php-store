@@ -1,88 +1,42 @@
 <?php
 
 require_once PATH_APP . "/models/DAO/DAO.php";
+require_once PATH_APP . "/models/entitys/Product.php";
 require_once PATH_APP . "/models/DAO/ProductDAO.php";
 require_once PATH_APP . "/models/entitys/PriceProduct.php";
-require_once PATH_APP . "/models/entitys/Product.php";
 
 class PriceProductDAO extends DAO
 {
-  public function insert($object)
+  public function insert($tb_product_id, $price_purchase, $price_sale, $quantity, $status)
   {
+    $result = null;
     try {
-      $sql = "";
+      $sql = "UPDATE tb_price_product SET tb_price_product.status = 0 WHERE tb_price_product.tb_product_id = $tb_product_id AND tb_price_product.status = 1;";
       $req = $this->PDO->prepare($sql);
       $req->execute();
-      $result = $req->fetchAll();
-    } catch (Exception $error) {
-      echo $error->getMessage();
-    }
-  }
 
-  public function update($object)
-  {
-    try {
-      $sql = "";
+      $sql = "INSERT INTO tb_price_product(tb_product_id, price_purchase, price_sale, quantity, status) 
+              VALUES ($tb_product_id, $price_purchase, $price_sale, $quantity, $status)";
       $req = $this->PDO->prepare($sql);
-      $req->execute();
-      $result = $req->fetchAll();
-    } catch (Exception $error) {
-      echo $error->getMessage();
-    }
-  }
-
-  public function delete($id)
-  {
-    try {
-      $sql = "";
-      $req = $this->PDO->prepare($sql);
-      $req->execute();
-      $result = $req->fetchAll();
-    } catch (Exception $error) {
-      echo $error->getMessage();
-    }
-  }
-
-  public function query($id)
-  {
-    $priceProduct = null;
-    try {
-      $sql = "SELECT * FROM product WHERE price_product.id = :id";
-      $req = $this->PDO->prepare($sql);
-      $req->bindValue(":id", $id);
       $req->execute();
       $result = $req->fetch();
 
-      if (!empty($result)) {
-        $pDAO = new ProductDAO();
-        $productId = $pDAO->query($result['product_id']);
-
-        $priceProduct = new PriceProduct($result['id'], $productId, $result['price_purchase'], $result['price_sale'], $result['quantity'], $result['status']);
-      }
+      var_dump($result);
     } catch (Exception $error) {
       echo $error->getMessage();
     }
-
-    return $priceProduct;
+    return $result;
   }
+
+  public function update($PriceProduct)
+  { }
+
+  public function delete($id)
+  { }
+
+  public function query($id)
+  { }
 
   public function queryAlll()
-  {
-    $products = null;
-    try {
-      $sql = "";
-      $req = $this->PDO->prepare($sql);
-      $req->execute();
-      $result = $req->fetchAll();
-
-      $products = array();
-      foreach ($result as $product) {
-        array_push($products, new Product($product['id'], $product['name']));
-      }
-    } catch (Exception $error) {
-      echo $error->getMessage();
-    }
-
-    return $products;
-  }
+  { }
 }

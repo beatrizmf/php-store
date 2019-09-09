@@ -9,7 +9,7 @@
     <tr>
       <td><?= $product->getId(); ?></td>
       <td><?= $product->getName(); ?></td>
-      <td><?= $product->getPrice(); ?></td>
+      <td><?= $product->getPrice() ? $product->getPrice() : "not set"; ?></td>
       <td><a href="<?= BASE_URL . "/product/?id=" . $product->getId() ?>">See more</a></td>
     </tr>
   <?php endforeach; ?>

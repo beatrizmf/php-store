@@ -6,7 +6,7 @@ class ProductController extends CoreController
 {
   public function list()
   {
-    $this->loadModel("Product");
+    $this->loadDAO("ProductDAO");
 
     $id = explode("=", $_SERVER["REQUEST_URI"])[1];
 
@@ -22,7 +22,7 @@ class ProductController extends CoreController
 
   public function listAll()
   {
-    $this->loadModel("Product");
+    $this->loadDAO("ProductDAO");
 
     $products = (new ProductDAO())->queryAll();
 
