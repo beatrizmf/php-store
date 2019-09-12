@@ -15,4 +15,8 @@
   <?php endforeach; ?>
 </table>
 <br />
+<a href="<?= BASE_URL . "/new-product" ?>">new product</a>
+<br /><br />
+<a href="<?= BASE_URL . "/price-products" ?>">price products</a>
+<br /><br />
 <a href="<?= BASE_URL ?>">home</a>

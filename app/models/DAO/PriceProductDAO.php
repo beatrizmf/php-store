@@ -9,6 +9,7 @@ class PriceProductDAO extends DAO
 {
   public function insert($tb_product_id, $price_purchase, $price_sale, $quantity, $status)
   {
+    echo "?";
     $result = null;
     try {
       $sql = "UPDATE tb_price_product SET tb_price_product.status = 0 WHERE tb_price_product.tb_product_id = $tb_product_id AND tb_price_product.status = 1;";
