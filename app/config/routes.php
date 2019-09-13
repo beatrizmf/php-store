@@ -9,19 +9,13 @@ $routes[""] = array(
 $routes["new-product"] = array(
   "route" => "/new-product",
   "controller" => "ProductController",
-  "method" => "new"
-);
-
-$routes["price-products"] = array(
-  "route" => "/price-products",
-  "controller" => "ProductController",
-  "method" => "price"
+  "method" => "create"
 );
 
 $routes["product"] = array(
   "route" => "/product",
   "controller" => "ProductController",
-  "method" => "list"
+  "method" => "listOne"
 );
 
 $routes["products"] = array(

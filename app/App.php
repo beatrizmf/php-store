@@ -36,7 +36,7 @@ class App
 
     */
 
-    $url = "http" . (isset($_SERVER[HTTPS]) ? (($_SERVER[HTTPS] == "on") ? "s" : "") : "") . "://" . "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $url = "http" . (isset($_SERVER["HTTPS"]) ? (($_SERVER["HTTPS"] == "on") ? "s" : "") : "") . "://" . "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $segment = explode("/", explode(BASE_URL . "/", $url)[1])[0];
 
     return $segment;

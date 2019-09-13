@@ -9,7 +9,7 @@ class PriceProduct
   private $quantity;
   private $status;
 
-  public function __construct($id, $productId, $pricePurchase, $priceSale, $quantity, $status = 1)
+  public function __construct($id, $productId=null, $pricePurchase=null, $priceSale=null, $quantity=null, $status = 1)
   {
     $this->id = $id;
     $this->productId = $productId;
@@ -26,27 +26,27 @@ class PriceProduct
 
   public function getProductId()
   {
-    return $this->id;
+    return $this->productId;
   }
 
   public function getPricePurchase()
   {
-    return $this->id;
+    return $this->pricePurchase;
   }
 
   public function getPriceSale()
   {
-    return $this->id;
+    return $this->priceSale;
   }
 
   public function getQuantity()
   {
-    return $this->id;
+    return $this->quantity;
   }
 
   public function getStatus()
   {
-    return $this->id;
+    return $this->status;
   }
 
   public function setId($id)
@@ -54,28 +54,28 @@ class PriceProduct
     $this->id = $id;
   }
 
-  public function setProductId($id)
+  public function setProductId($productId)
   {
-    $this->id = $id;
+    $this->productId = $productId;
   }
 
-  public function setPricePurchase($id)
+  public function setPricePurchase($pricePurchase)
   {
-    $this->id = $id;
+    $this->pricePurchase = $pricePurchase;
   }
 
-  public function setPriceSale($id)
+  public function setPriceSale($priceSale)
   {
-    $this->id = $id;
+    $this->id = $priceSale;
   }
 
-  public function setQuantity($id)
+  public function setQuantity($quantity)
   {
-    $this->id = $id;
+    $this->quantity = $quantity;
   }
 
-  public function setStatus($id)
+  public function setStatus($status)
   {
-    $this->id = $id;
+    $this->status = $status;
   }
 }

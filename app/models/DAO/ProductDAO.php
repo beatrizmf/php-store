@@ -5,14 +5,18 @@ require_once PATH_APP . "/models/entitys/Product.php";
 
 class ProductDAO extends DAO
 {
-  public function insert($name)
+  public function insert($ProductObj)
   {
     $result = false;
     try {
+      $name = $ProductObj->getName();
+
       $sql = "INSERT INTO tb_product(name) VALUES ('$name')";
       $req = $this->PDO->prepare($sql);
       $req->execute();
-      $result = true;
+      
+      $result = $this->PDO->lastInsertId();
+      
     } catch (Exception $error) {
       echo $error->getMessage();
     }
@@ -20,11 +24,11 @@ class ProductDAO extends DAO
     return $result;
   }
 
-  public function update($Product)
+  public function update($ProductObj)
   {
     $result = null;
     try {
-      $sql = "UPDATE tb_product SET name = $Product->getName() WHERE product.id = 3";
+      $sql = "UPDATE tb_product SET name = $ProductObj->getName() WHERE product.id = 3";
       $req = $this->PDO->prepare($sql);
       $req->execute();
       $result = $req->fetchAll();
