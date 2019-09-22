@@ -19,23 +19,6 @@ class App
 
   private function getSegments()
   {
-    /*
-    $segments = explode("/", parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
-
-    array_shift($segments);
-    array_shift($segments);
-    array_shift($segments);
-
-    foreach ($segments as $key => $s) {
-      if ($s == "") {
-        unset($segments[$key]);
-      }
-    }
-
-    return implode("/", $segments);
-
-    */
-
     $url = "http" . (isset($_SERVER["HTTPS"]) ? (($_SERVER["HTTPS"] == "on") ? "s" : "") : "") . "://" . "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $segment = explode("/", explode(BASE_URL . "/", $url)[1])[0];
 
