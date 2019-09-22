@@ -7,11 +7,9 @@ abstract class DAO
   public function __construct()
   {
     require_once PATH_APP . "/config/database.php";
-
-    /*
     require_once PATH_APP . "/models/DAO/Connection.php";
     $connection = Connection::getInstance("localhost", "store", "root", "94492012");
-    $connection = $connection->getConnection(); */
+    $connection = $connection->getConnection(); 
 
     $this->PDO = $connection;
   }
