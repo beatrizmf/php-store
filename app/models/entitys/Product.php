@@ -4,13 +4,15 @@ class Product
 {
   private $id;
   private $name;
-  private $virtualCurrentlPrice;
+  private $virtualCurrentPrice;
+  private $virtualCurrentQuantify;
 
-  public function __construct($id, $name = null, $virtualCurrentlPrice = null)
+  public function __construct($id, $name = null, $virtualCurrentPrice = null, $virtualCurrentQuantify = null)
   {
     $this->id = $id;
     $this->name = $name;
-    $this->virtualCurrentlPrice = $virtualCurrentlPrice;
+    $this->virtualCurrentPrice = $virtualCurrentPrice;
+    $this->virtualCurrentQuantify = $virtualCurrentQuantify;
   }
 
   public function getId()
@@ -25,7 +27,11 @@ class Product
 
   public function getPrice()
   {
-    return $this->virtualCurrentlPrice;
+    return $this->virtualCurrentPrice;
+  }
+
+  public function getQuantify(){
+    return $this->virtualCurrentQuantify;
   }
 
   public function setId($id)
@@ -38,8 +44,12 @@ class Product
     $this->name = $name;
   }
 
-  public function setPrice($virtualCurrentlPrice)
+  public function setPrice($virtualCurrentPrice)
   {
-    $this->virtualCurrentlPrice = $virtualCurrentlPrice;
+    $this->virtualCurrentPrice = $virtualCurrentPrice;
+  }
+
+  public function setQuatify($virtualCurrentQuantify){
+    $this->virtualCurrentQuantify = $virtualCurrentQuantify;
   }
 }

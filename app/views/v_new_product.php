@@ -1,7 +1,7 @@
 <?php
-if(isset($data["result"])) {
+if(isset($data["message"])) {
   echo "<br/>";
-  echo "<p>" . $data["result"] ? "success" : "fail" . "</p>"; 
+  echo "<p>" . $data["message"] ? "success" : "fail" . "</p>"; 
   echo "<br/>";
   echo "<br/>";
 }

@@ -52,7 +52,6 @@ class ProductController extends CoreController
   
     if (!empty($products)) {
       $this->addData("products", $products);
-      $this->addData("message", "");
       $this->loadView("v_products");
     } else {
       $this->addData("message", "No products in store");

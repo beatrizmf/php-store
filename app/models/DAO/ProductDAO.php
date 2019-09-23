@@ -65,7 +65,8 @@ class ProductDAO extends DAO
       
       if (!empty($result)) {
         $price = $this->getCurrentPrice($result['id']);
-        $product = (new Product($result['id'], $result['name'], $price));
+        $quantify = $this->getCurrentQuantify($result['id']);
+        $product = (new Product($result['id'], $result['name'], $price, $quantify));
       }
     } catch (Exception $error) {
       echo $error->getMessage();
@@ -87,7 +88,8 @@ class ProductDAO extends DAO
         $products = array();
         foreach ($result as $product) {
           $price = $this->getCurrentPrice($product['id']);
-          array_push($products, new Product($product['id'], $product['name'], $price));
+          $quantify = $this->getCurrentQuantify($product['id']);
+          array_push($products, new Product($product['id'], $product['name'], $price, $quantify));
         }
       }
     } catch (Exception $error) {
@@ -99,16 +101,32 @@ class ProductDAO extends DAO
 
   public function getCurrentPrice($tb_product_id)
   {
-    $priceProduct = null;
+    $price = null;
     try {
       $sql = "SELECT price_sale FROM tb_price_product WHERE tb_price_product.tb_product_id = $tb_product_id AND tb_price_product.status = 1";
       $req = $this->PDO->prepare($sql);
       $req->execute();
-      $priceProduct = $req->fetch()["price_sale"];
+      $price = $req->fetch()["price_sale"];
     } catch (Exception $error) {
       echo $error->getMessage();
     }
 
-    return $priceProduct;
+    return $price;
+  }
+
+  public function getCurrentQuantify($tb_product_id)
+  {
+    $quantify = null;
+    try {
+      $sql = "SELECT quantity FROM tb_price_product WHERE tb_price_product.tb_product_id = $tb_product_id AND tb_price_product.status = 1";
+      $req = $this->PDO->prepare($sql);
+      $req->execute();
+      $quantify = $req->fetch()["quantity"];
+      // var_dump($req->fetch()["quantity"]);
+    } catch (Exception $error) {
+      echo $error->getMessage();
+    }
+
+    return $quantify;
   }
 }
