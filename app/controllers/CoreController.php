@@ -4,6 +4,46 @@ class CoreController
 {
 
   private $dataView = array();
+  private $limitIdleness = 3600;
+
+  public function __construct()
+  {
+    $this->checkIdleness();
+  }
+
+  protected function logged()
+  {
+    return isset($_SESSION['user']) ? true : false;
+  }
+
+  protected function looginUser($user)
+  {
+    session_regenerate_id();
+    $_SESSION['user'] = serialize($user);
+    $_SESSION['last-acess'] = time();
+  }
+
+  protected function logoutUser()
+  {
+    unset($_SESSION['user']);
+    unset($_SESSION['last-acess']);
+    session_destroy();
+  }
+
+  private function checkIdleness()
+  {
+    if (isset($_SESSION['last-acess'])) {
+      $timeIdleness = time() - $_SESSION['last-acess'];
+
+      if ($timeIdleness > $this->limitIdleness) {
+        $this->logoutUser();
+        $_SESSION['error'] = "session expired";
+        header("Location:" . BASE_URL.'/login');
+      } else {
+        $_SESSION['last-acess'] = time();
+      }
+    }
+  }
 
   protected function loadDAO($DAO)
   {

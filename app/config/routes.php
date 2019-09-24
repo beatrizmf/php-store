@@ -1,7 +1,19 @@
 <?php
 
-$routes[""] = array(
-  "route" => "/",
+$routes["login"] = array(
+  "route" => "/login",
+  "controller" => "SessionController",
+  "method" => "login"
+);
+
+$routes[" logout"] = array(
+  "route" => "/logout",
+  "controller" => "SessionController",
+  "method" => "logout"
+);
+
+$routes["home"] = array(
+  "route" => "/home",
   "controller" => "PageController",
   "method" => "index"
 );

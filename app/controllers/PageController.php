@@ -6,11 +6,19 @@ class PageController extends CoreController
 {
   public function index()
   {
-    $this->loadView("v_home");
+    if ($this->logged()) {
+      $this->loadView("v_home");
+    } else {
+      header("Location:" . BASE_URL . '/login');
+    }
   }
 
   public function notFound()
   {
-    $this->loadView("v_not_found");
+    if ($this->logged()) {
+      $this->loadView("v_not_found");
+    } else {
+      header("Location:" . BASE_URL . '/login');
+    }
   }
 }

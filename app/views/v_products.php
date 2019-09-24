@@ -28,6 +28,6 @@ if(isset($data["message"])) {
   </table>
 <?php endif; ?>
 <br />
-<a href="<?= BASE_URL . "/new-product" ?>">new product</a>
+<a href="<?= BASE_URL ?>/new-product">new product</a>
 <br /><br />
-<a href="<?= BASE_URL ?>">home</a>
+<a href="<?= BASE_URL ?>/home">home</a>

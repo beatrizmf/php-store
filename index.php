@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once dirname(__FILE__) . "/app/config/constants.php";
 
 require_once PATH_APP . "/config/routes.php";
