@@ -58,6 +58,7 @@ class CoreController
 
   protected function loadViewLogin(){
     require_once PATH_APP . "/views/v_login.php";
+    unset($_SESSION["message"]);
   }
 
   protected function loadView($view)
@@ -69,5 +70,6 @@ class CoreController
     } else {
       header("Location:" . BASE_URL . '/login');
     }
+    unset($_SESSION["message"]);
   }
 }

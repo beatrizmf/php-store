@@ -1,11 +1,5 @@
 <h1>cart</h1>
 
-<?php
-if (isset($_SESSION["message"])) {
-  echo "<p>" . $_SESSION["message"] . "</p>";
-}
-?>
-
 <?php if (!empty($data["cart"])) : ?>
   <table border="1">
     <tr>

@@ -1,12 +1,3 @@
-<?php
-if(isset($data["message"])) {
-  echo "<br/>";
-  echo "<p>" . $data["message"] . "</p>"; 
-  echo "<br/>";
-  echo "<br/>";
-}
-?>
-
 <?php if (!empty($data["products"])) : ?>
   <h1>products</h1>
   <table border="1">

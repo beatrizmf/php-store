@@ -13,6 +13,9 @@
     </ul>
   </nav>
   <?php
+  if (isset($_SESSION["message"])) {
+    echo "<p>" . $_SESSION["message"] . "</p>";
+  }
   require_once PATH_APP . "/views/" . $data["view"] . ".php";
   ?>
 </body>

@@ -20,7 +20,7 @@ class ProductController extends CoreController
         $result = (new PriceProductDAO)->insert($PriceProductObj);
       }
 
-      $this->addData("message", $result);
+      $this->addData("result", $result);
       $this->loadView("v_new_product");
     } else {
       $this->loadView("v_new_product");
@@ -53,7 +53,7 @@ class ProductController extends CoreController
       $this->addData("products", $products);
       $this->loadView("v_products");
     } else {
-      $this->addData("message", "No products in store");
+      $_SESSION["message"] = "No products in store";
       $this->loadView("v_products");
     }
   }

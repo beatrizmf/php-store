@@ -41,6 +41,7 @@ class CartController extends CoreController
       $_SESSION["cart"] = $products;
     }
 
+    $_SESSION["message"] = "product added to cart";
     header("Location:" . BASE_URL . '/products');
   }
 
@@ -57,8 +58,8 @@ class CartController extends CoreController
       $_SESSION["message"] = "item does not exist in cart";
     }
 
+    $_SESSION["message"] = "product removed";
     header("Location:" . BASE_URL . '/cart');
-
   }
 
   public function close()
