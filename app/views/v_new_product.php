@@ -22,7 +22,3 @@ if(isset($data["message"])) {
   
   <button type="submit">Save</button>
 </form>
-
-<br />
-
-<a href="<?= BASE_URL . '/products' ?>">products</a>

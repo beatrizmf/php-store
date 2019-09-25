@@ -6,74 +6,61 @@ class CartController extends CoreController
 {
   public function index()
   {
-    if ($this->logged()) {
-      if (!empty($_SESSION["cart"])) {
+    if (!empty($_SESSION["cart"])) {
 
-        $this->loadDAO("ProductDAO");
+      $this->loadDAO("ProductDAO");
 
-        $products = array();
-        $totalPrice = 0;
+      $products = array();
+      $totalPrice = 0;
 
-        foreach ($_SESSION["cart"] as $productId) {
-          $product = (new ProductDAO())->query($productId);
-          array_push($products, $product);
-          $totalPrice = $totalPrice + $product->getPrice();
-        }
-
-        $this->addData("cart", $products);
-        $this->addData("totalPrice", $totalPrice);
-
-        $this->loadView("v_cart");
+      foreach ($_SESSION["cart"] as $productId) {
+        $product = (new ProductDAO())->query($productId);
+        array_push($products, $product);
+        $totalPrice = $totalPrice + $product->getPrice();
       }
-    } else {
-      header("Location:" . BASE_URL . '/login');
+
+      $this->addData("cart", $products);
+      $this->addData("totalPrice", $totalPrice);
     }
+    $this->loadView("v_cart");
   }
 
   public function addProduct()
   {
-    if ($this->logged()) {
+    $id = explode("=", $_SERVER["REQUEST_URI"])[1];
 
-      $id = explode("=", $_SERVER["REQUEST_URI"])[1];
-
-      if (!empty($_SESSION["cart"])) {
-        if (in_array($id, $_SESSION["cart"])) {
-          header("Location:" . BASE_URL . '/products');
-          return;
-        }
-        array_push($_SESSION["cart"], $id);
-      } else {
-        $products = array();
-        array_push($products, $id);
-        $_SESSION["cart"] = $products;
+    if (!empty($_SESSION["cart"])) {
+      if (in_array($id, $_SESSION["cart"])) {
+        header("Location:" . BASE_URL . '/products');
+        return;
       }
-
-      header("Location:" . BASE_URL . '/products');
+      array_push($_SESSION["cart"], $id);
     } else {
-      header("Location:" . BASE_URL . '/login');
+      $products = array();
+      array_push($products, $id);
+      $_SESSION["cart"] = $products;
     }
+
+    header("Location:" . BASE_URL . '/products');
   }
 
   public function closeCart()
   {
-    if ($this->logged()) {
-      if (!empty($_SESSION["cart"])) {
 
-        $this->loadDAO("ProductDAO");
+    if (!empty($_SESSION["cart"])) {
 
-        $products = array();
+      $this->loadDAO("ProductDAO");
 
-        foreach ($_SESSION["cart"] as $productId) {
-          $product = (new ProductDAO())->query($productId);
-          array_push($products, $product);
-        }
+      $products = array();
 
-        $this->addData("cart", $products);
-
-        $this->loadView("v_cart");
+      foreach ($_SESSION["cart"] as $productId) {
+        $product = (new ProductDAO())->query($productId);
+        array_push($products, $product);
       }
-    } else {
-      header("Location:" . BASE_URL . '/login');
+
+      $this->addData("cart", $products);
+
+      $this->loadView("v_cart");
     }
   }
 }

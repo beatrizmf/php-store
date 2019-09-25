@@ -19,9 +19,3 @@
 <?php else : ?>
   <p>empty cart</p>
 <?php endif; ?>
-
-
-<br /><br />
-<a href="<?= BASE_URL ?>">home</a>
-<br /><br />
-<a href="<?= BASE_URL ?>/products">products</a>

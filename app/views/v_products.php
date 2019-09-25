@@ -27,7 +27,3 @@ if(isset($data["message"])) {
     <?php endforeach; ?>
   </table>
 <?php endif; ?>
-<br />
-<!-- <a href="<?//= BASE_URL ?>/new-product">new product</a> -->
-<!-- <br /><br /> -->
-<a href="<?= BASE_URL ?>">home</a>

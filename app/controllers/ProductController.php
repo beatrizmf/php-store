@@ -7,66 +7,54 @@ class ProductController extends CoreController
 
   public function create()
   {
-    if ($this->logged()) {
-      if (!empty($_POST)) {
+    if (!empty($_POST)) {
 
-        $this->loadDAO("ProductDAO");
-        $this->loadDAO("PriceProductDAO");
+      $this->loadDAO("ProductDAO");
+      $this->loadDAO("PriceProductDAO");
 
-        $ProductObj = new Product(null, $_POST["name"]);
-        $result = (new ProductDAO)->insert($ProductObj);
+      $ProductObj = new Product(null, $_POST["name"]);
+      $result = (new ProductDAO)->insert($ProductObj);
 
-        if ($result != false) {
-          $PriceProductObj = new PriceProduct(null, $result, $_POST["price_purchase"], $_POST["price_sale"], $_POST["quantity"], 1);
-          $result = (new PriceProductDAO)->insert($PriceProductObj);
-        }
-
-        $this->addData("message", $result);
-        $this->loadView("v_new_product");
-      } else {
-        $this->loadView("v_new_product");
+      if ($result != false) {
+        $PriceProductObj = new PriceProduct(null, $result, $_POST["price_purchase"], $_POST["price_sale"], $_POST["quantity"], 1);
+        $result = (new PriceProductDAO)->insert($PriceProductObj);
       }
+
+      $this->addData("message", $result);
+      $this->loadView("v_new_product");
     } else {
-      header("Location:" . BASE_URL . '/login');
+      $this->loadView("v_new_product");
     }
   }
 
   public function listOne()
   {
-    if ($this->logged()) {
-      $this->loadDAO("ProductDAO");
+    $this->loadDAO("ProductDAO");
 
-      $id = explode("=", $_SERVER["REQUEST_URI"])[1];
+    $id = explode("=", $_SERVER["REQUEST_URI"])[1];
 
-      $product = (new ProductDAO())->query($id);
+    $product = (new ProductDAO())->query($id);
 
-      if ($product) {
-        $this->addData("product", $product);
-        $this->loadView("v_product");
-      } else {
-        $this->loadView("v_not_found");
-      }
+    if ($product) {
+      $this->addData("product", $product);
+      $this->loadView("v_product");
     } else {
-      header("Location:" . BASE_URL . '/login');
+      $this->loadView("v_not_found");
     }
   }
 
   public function listAll()
   {
-    if ($this->logged()) {
-      $this->loadDAO("ProductDAO");
+    $this->loadDAO("ProductDAO");
 
-      $products = (new ProductDAO())->queryAll();
+    $products = (new ProductDAO())->queryAll();
 
-      if (!empty($products)) {
-        $this->addData("products", $products);
-        $this->loadView("v_products");
-      } else {
-        $this->addData("message", "No products in store");
-        $this->loadView("v_products");
-      }
+    if (!empty($products)) {
+      $this->addData("products", $products);
+      $this->loadView("v_products");
     } else {
-      header("Location:" . BASE_URL . '/login');
+      $this->addData("message", "No products in store");
+      $this->loadView("v_products");
     }
   }
 }

@@ -17,7 +17,7 @@ class SessionController extends CoreController
           $_SESSION['error'] = "username or password incorrect";
         }
       }
-      $this->loadView("v_login");
+      $this->loadViewLogin();
     }
   }
 
