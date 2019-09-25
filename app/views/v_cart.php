@@ -1,5 +1,12 @@
+<h1>cart</h1>
+
+<?php
+if (isset($_SESSION["message"])) {
+  echo "<p>" . $_SESSION["message"] . "</p>";
+}
+?>
+
 <?php if (!empty($data["cart"])) : ?>
-  <h1>cart</h1>
   <table border="1">
     <tr>
       <th>name</th>
@@ -7,8 +14,6 @@
       <th>-</th>
     </tr>
     <?php foreach ($data["cart"] as $product) : ?>
-    <?php
-      ?>
       <tr>
         <td><?= $product->getName(); ?></td>
         <td><?= $product->getPrice() ? $product->getPrice() : "not set"; ?></td>
@@ -17,6 +22,8 @@
     <?php endforeach; ?>
   </table>
   <p>Total: R$ <?= $data["totalPrice"] ?></p>
+  <br />
+  <a href="<?= BASE_URL ?>/close-cart">check out</a>
 
 <?php else : ?>
   <p>empty cart</p>

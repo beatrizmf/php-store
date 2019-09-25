@@ -9,12 +9,12 @@ class SessionController extends CoreController
     if ($this->logged()) {
       header("Location:" . BASE_URL);
     } else {
-      if (!empty($_POST['user']) && !empty($_POST['password'])) {
-        if ($_POST['user'] == "admin" && $_POST['password'] == "admin") {
+      if (!empty($_POST["user"]) && !empty($_POST["password"])) {
+        if ($_POST["user"] == "admin" && $_POST["password"] == "admin") {
           $this->looginUser("admin");
           header("Location:" . BASE_URL);
         } else {
-          $_SESSION['error'] = "username or password incorrect";
+          $_SESSION["message"] = "username or password incorrect";
         }
       }
       $this->loadViewLogin();
@@ -24,6 +24,6 @@ class SessionController extends CoreController
   public function logout()
   {
     $this->logoutUser();
-    header("Location:" . BASE_URL . '/login');
+    header("Location:" . BASE_URL . "/login");
   }
 }

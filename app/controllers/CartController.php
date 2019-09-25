@@ -54,30 +54,22 @@ class CartController extends CoreController
       }
 
     } else {
-      $_SESSION["error"] = "item does not exist in cart";
+      $_SESSION["message"] = "item does not exist in cart";
     }
 
     header("Location:" . BASE_URL . '/cart');
 
   }
 
-  public function closeCart()
+  public function close()
   {
-
     if (!empty($_SESSION["cart"])) {
-
-      $this->loadDAO("ProductDAO");
-
-      $products = array();
-
-      foreach ($_SESSION["cart"] as $productId) {
-        $product = (new ProductDAO())->query($productId);
-        array_push($products, $product);
-      }
-
-      $this->addData("cart", $products);
-
-      $this->loadView("v_cart");
+      unset($_SESSION["cart"]);
+      $_SESSION["message"] = "successful purchase";
+    } else {
+      $_SESSION["message"] = "empty card";
     }
+
+    header("Location:" . BASE_URL . '/cart');
   }
 }

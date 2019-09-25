@@ -37,7 +37,7 @@ class CoreController
 
       if ($timeIdleness > $this->limitIdleness) {
         $this->logoutUser();
-        $_SESSION['error'] = "session expired";
+        $_SESSION["message"] = "session expired";
         header("Location:" . BASE_URL . '/login');
       } else {
         $_SESSION['last-acess'] = time();

@@ -57,5 +57,5 @@ $routes["remove-from-cart"] = array(
 $routes["close-cart"] = array(
   "route" => "/close-cart",
   "controller" => "CartController",
-  "method" => "closeCart"
+  "method" => "close"
 );
