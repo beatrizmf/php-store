@@ -1,4 +1,4 @@
-<?php if (isset($data["cart"])) : ?>
+<?php if (!empty($data["cart"])) : ?>
   <h1>cart</h1>
   <table border="1">
     <tr>
