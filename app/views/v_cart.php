@@ -1,4 +1,4 @@
-<?php if (!empty($data["cart"])) : ?>
+<?php if (isset($data["cart"])) : ?>
   <h1>cart</h1>
   <table border="1">
     <tr>
@@ -22,6 +22,6 @@
 
 
 <br /><br />
-<a href="<?= BASE_URL ?>/home">home</a>
+<a href="<?= BASE_URL ?>">home</a>
 <br /><br />
 <a href="<?= BASE_URL ?>/products">products</a>

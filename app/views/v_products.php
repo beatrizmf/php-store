@@ -30,4 +30,4 @@ if(isset($data["message"])) {
 <br />
 <!-- <a href="<?//= BASE_URL ?>/new-product">new product</a> -->
 <!-- <br /><br /> -->
-<a href="<?= BASE_URL ?>/home">home</a>
+<a href="<?= BASE_URL ?>">home</a>

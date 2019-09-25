@@ -12,8 +12,8 @@ $routes[" logout"] = array(
   "method" => "logout"
 );
 
-$routes["home"] = array(
-  "route" => "/home",
+$routes[""] = array(
+  "route" => "/",
   "controller" => "PageController",
   "method" => "index"
 );
