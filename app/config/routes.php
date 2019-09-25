@@ -36,8 +36,20 @@ $routes["products"] = array(
   "method" => "listAll"
 );
 
-$routes["about"] = array(
-  "route" => "/about",
-  "controller" => "PageController",
-  "method" => "about"
+$routes["cart"] = array(
+  "route" => "/cart",
+  "controller" => "CartController",
+  "method" => "index"
+);
+
+$routes["add-to-cart"] = array(
+  "route" => "/add-to-cart",
+  "controller" => "CartController",
+  "method" => "addProduct"
+);
+
+$routes["close-cart"] = array(
+  "route" => "/close-cart",
+  "controller" => "CartController",
+  "method" => "closeCart"
 );
