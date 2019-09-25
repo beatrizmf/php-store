@@ -48,6 +48,12 @@ $routes["add-to-cart"] = array(
   "method" => "addProduct"
 );
 
+$routes["remove-from-cart"] = array(
+  "route" => "/remove-from-cart",
+  "controller" => "CartController",
+  "method" => "removeProduct"
+);
+
 $routes["close-cart"] = array(
   "route" => "/close-cart",
   "controller" => "CartController",

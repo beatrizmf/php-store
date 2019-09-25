@@ -44,6 +44,23 @@ class CartController extends CoreController
     header("Location:" . BASE_URL . '/products');
   }
 
+  public function removeProduct(){
+    $id = explode("=", $_SERVER["REQUEST_URI"])[1];
+
+    if (!empty($_SESSION["cart"])) {
+      $index = array_search($id, $_SESSION["cart"]);
+      if(isset($index)){
+        unset($_SESSION["cart"][$index]);
+      }
+
+    } else {
+      $_SESSION["error"] = "item does not exist in cart";
+    }
+
+    header("Location:" . BASE_URL . '/cart');
+
+  }
+
   public function closeCart()
   {
 
