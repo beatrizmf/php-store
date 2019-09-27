@@ -39,14 +39,14 @@ CREATE TABLE IF NOT EXISTS `store`.`tb_sale` (
   `date` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_tb_sale_tb_status_sale1_idx` (`tb_status_sale_id` ASC),
-  INDEX `fk_tb_sale_tb_user1_idx` (`user_client` ASC),
+  INDEX `fk_tb_sale_tb_user1_idx` (`tb_user_id` ASC),
   CONSTRAINT `fk_tb_sale_tb_status_sale1`
     FOREIGN KEY (`tb_status_sale_id`)
     REFERENCES `store`.`tb_status_sale` (`id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_tb_sale_tb_user1`
-    FOREIGN KEY (`user_client`)
+    FOREIGN KEY (`tb_user_id`)
     REFERENCES `store`.`tb_user` (`id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
