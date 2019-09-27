@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `store`.`tb_sale` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tb_status_sale_id` INT NOT NULL,
-  `user_client` INT NOT NULL,
+  `tb_user_id` INT NOT NULL,
   `date` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_tb_sale_tb_status_sale1_idx` (`tb_status_sale_id` ASC),
