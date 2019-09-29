@@ -34,7 +34,7 @@ class PriceProductDAO extends DAO
     return $result;
   }
 
-  public function update($PriceProduct)
+  public function update($PriceProductObj)
   { }
 
   public function delete($id)

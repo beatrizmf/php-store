@@ -65,8 +65,26 @@ class CartController extends CoreController
   public function close()
   {
     if (!empty($_SESSION["cart"])) {
-      unset($_SESSION["cart"]);
-      $_SESSION["message"] = "successful purchase";
+      $this->loadDAO("ProductDAO");
+      $this->loadDAO("SaleDAO");
+      $this->loadDAO("ItemSaleDAO");
+
+      $SaleOjb = new Sale(null, 1, $_SESSION["userId"]);
+      $saleId = (new SaleDAO)->insert($SaleOjb);
+
+      foreach($_SESSION["cart"] as $productId){
+        $priceProductId = (new ProductDAO)->getIdPriceProduct($productId);
+        $SaleItemObj = new ItemSale(null, $saleId, $priceProductId);
+        $result = (new ItemSaleDAO)->insert($SaleItemObj);
+      }
+
+      if(isset($result)){
+        unset($_SESSION["cart"]);
+        $_SESSION["message"] = "successful purchase";
+      } else {
+        $_SESSION["message"] = "something went wrong";
+      }
+
     } else {
       $_SESSION["message"] = "empty card";
     }

@@ -99,6 +99,21 @@ class ProductDAO extends DAO
     return $products;
   }
 
+  public function getIdPriceProduct($productId){
+    $priceProductId = null;
+    try {
+      $sql = "SELECT id FROM tb_price_product WHERE tb_price_product.tb_product_id = :productId AND tb_price_product.status = 1";
+      $req = $this->PDO->prepare($sql);
+      $req->bindValue(":productId", $productId);
+      $req->execute();
+      $priceProductId = $req->fetch()["id"];
+    } catch (Exception $error) {
+      echo $error->getMessage();
+    }
+
+    return $priceProductId;
+  }
+
   public function getCurrentPrice($tb_product_id)
   {
     $price = null;

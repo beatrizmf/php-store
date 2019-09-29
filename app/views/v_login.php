@@ -10,7 +10,7 @@
       }
     ?>
     <form action="<?= BASE_URL ?>/login" method="POST">
-      <input type="text" name="user" autofocus placeholder="user">
+      <input type="text" name="username" autofocus placeholder="username">
       <input type="password" name="password" placeholder="password">
       <button type="submit">Sing In</button>
     </form>

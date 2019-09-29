@@ -16,7 +16,7 @@ class CoreController
     return isset($_SESSION['user']) ? true : false;
   }
 
-  protected function looginUser($user)
+  protected function loginUser($user)
   {
     session_regenerate_id();
     $_SESSION['user'] = serialize($user);
