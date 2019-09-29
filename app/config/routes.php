@@ -36,6 +36,12 @@ $routes["products"] = array(
   "method" => "listAll"
 );
 
+$routes["purchases"] = array(
+  "route" => "/purchases",
+  "controller" => "SaleController",
+  "method" => "index"
+);
+
 $routes["cart"] = array(
   "route" => "/cart",
   "controller" => "CartController",

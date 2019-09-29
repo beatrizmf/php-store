@@ -9,6 +9,7 @@
       <li><a href="<?= BASE_URL ?>">Home</a></li>
       <li><a href="<?= BASE_URL ?>/products">Products</a></li>
       <li><a href="<?= BASE_URL ?>/cart">Cart</a></li>
+      <li><a href="<?= BASE_URL ?>/purchases">Purchases</a></li>
       <li><a href="<?= BASE_URL ?>/logout">Logout</a></li>
     </ul>
   </nav>
