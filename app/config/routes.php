@@ -1,15 +1,21 @@
 <?php
 
-$routes["login"] = array(
-  "route" => "/login",
+$routes["sign-in"] = array(
+  "route" => "/sign-in",
   "controller" => "SessionController",
-  "method" => "login"
+  "method" => "signIn"
 );
 
-$routes[" logout"] = array(
-  "route" => "/logout",
+$routes["sign-up"] = array(
+  "route" => "/sign-up",
   "controller" => "SessionController",
-  "method" => "logout"
+  "method" => "signUp"
+);
+
+$routes["sign-out"] = array(
+  "route" => "/sign-out",
+  "controller" => "SessionController",
+  "method" => "signOut"
 );
 
 $routes[""] = array(

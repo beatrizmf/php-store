@@ -38,7 +38,7 @@ class CoreController
       if ($timeIdleness > $this->limitIdleness) {
         $this->logoutUser();
         $_SESSION["message"] = "session expired";
-        header("Location:" . BASE_URL . '/login');
+        header("Location:" . BASE_URL . '/sign-in');
       } else {
         $_SESSION['last-acess'] = time();
       }
@@ -56,8 +56,13 @@ class CoreController
     $this->dataView[$data] = $value;
   }
 
-  protected function loadViewLogin(){
-    require_once PATH_APP . "/views/v_login.php";
+  protected function loadViewSignIn(){
+    require_once PATH_APP . "/views/v_sign_in.php";
+    unset($_SESSION["message"]);
+  }
+
+  protected function loadViewSignUp(){
+    require_once PATH_APP . "/views/v_sign_up.php";
     unset($_SESSION["message"]);
   }
 
@@ -68,7 +73,7 @@ class CoreController
       $data = $this->dataView;
       require_once PATH_APP . "/views/v_base.php";
     } else {
-      header("Location:" . BASE_URL . '/login');
+      header("Location:" . BASE_URL . '/sign-in');
     }
     unset($_SESSION["message"]);
   }

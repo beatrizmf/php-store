@@ -6,7 +6,22 @@ require_once PATH_APP . "/models/entitys/User.php";
 class UserDAO extends DAO
 {
   public function insert($UserObj)
-  { }
+  { 
+    try {
+      $sql = "INSERT INTO tb_user(tb_type_user_id, name, username, password) VALUES (1, :name, :username, :password)";
+      $req = $this->PDO->prepare($sql);
+      $req->bindValue(":name", $UserObj->getName());
+      $req->bindValue(":username", $UserObj->getUsername());
+      $req->bindValue(":password", $UserObj->getPassword());
+      $req->execute();
+      return true;
+
+    } catch (Exception $error) {
+      echo $error->getMessage();
+    }
+
+    return false;
+  }
   public function update($UserObj)
   { }
   public function delete($id)
