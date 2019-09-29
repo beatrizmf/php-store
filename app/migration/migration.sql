@@ -61,6 +61,8 @@ AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8;
 
 
+INSERT INTO `tb_status_sale` (`id`, `name`) VALUES (1, 'active');
+
 -- -----------------------------------------------------
 -- Table `store`.`tb_type_user`
 -- -----------------------------------------------------
@@ -72,6 +74,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
+INSERT INTO `tb_type_user` (`id`, `name`) VALUES (1, 'user');
 
 -- -----------------------------------------------------
 -- Table `store`.`tb_user`
