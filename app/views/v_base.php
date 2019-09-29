@@ -7,6 +7,7 @@
   <nav>
     <ul>
       <li><a href="<?= BASE_URL ?>">Home</a></li>
+      <li><a href="<?= BASE_URL ?>/new-product">New Product[Admin]</a></li>
       <li><a href="<?= BASE_URL ?>/products">Products</a></li>
       <li><a href="<?= BASE_URL ?>/cart">Cart</a></li>
       <li><a href="<?= BASE_URL ?>/purchases">Purchases</a></li>
