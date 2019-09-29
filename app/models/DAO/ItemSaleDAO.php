@@ -18,6 +18,11 @@ class ItemSaleDAO extends DAO
       $result = $this->PDO->lastInsertId();
 
       if ($result) {
+        $sql = "UPDATE tb_price_product SET tb_price_product.quantity = tb_price_product.quantity-1 WHERE (tb_price_product.id = :priceProductId)";
+        $req = $this->PDO->prepare($sql);
+        $req->bindValue(":priceProductId", $ItemSaleObj->getPriceProductId());
+        $req->execute();
+
         return $result;
       }
     } catch (Exception $error) {
