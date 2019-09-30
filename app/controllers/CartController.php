@@ -74,7 +74,7 @@ class CartController extends CoreController
 
       foreach($_SESSION["cart"] as $productId){
         $priceProductId = (new ProductDAO)->getIdPriceProduct($productId);
-        $ItemSaleObj = new ItemSale(null, $saleId, $priceProductId, $_POST["quantity"]);
+        $ItemSaleObj = new ItemSale(null, $saleId, $priceProductId, 1);
         $result = (new ItemSaleDAO)->insert($ItemSaleObj);
       }
 
