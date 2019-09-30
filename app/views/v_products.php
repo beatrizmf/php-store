@@ -12,10 +12,10 @@
       <tr>
         <td><?= $product->getName(); ?></td>
         <td><?= $product->getPrice() ? $product->getPrice() : "not set"; ?></td>
-        <td><?= $product->getQuantify() ? $product->getQuantify() : "0"; ?></td>
+        <td><?= $product->getQuantity() ? $product->getQuantity() : "0"; ?></td>
         <td>
           <?=
-                (($product->getQuantify()) > 0)
+                (($product->getQuantity()) > 0)
                   ? "<a href='$urlAddToCart'>add to cart</a></td>"
                   : "unavailable"
               ?>

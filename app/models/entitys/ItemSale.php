@@ -7,7 +7,7 @@ class ItemSale
   private $priceProductId;
   private $quantity;
 
-  public function __construct($id, $saleId = null, $priceProductId = null, $quantity = 1)
+  public function __construct($id, $saleId = null, $priceProductId = null, $quantity = null)
   {
     $this->id = $id;
     $this->saleId = $saleId;
