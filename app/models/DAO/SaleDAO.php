@@ -26,23 +26,20 @@ class SaleDAO extends DAO
   }
   public function itemsByUser($userId)
   {
-    $sql = "SELECT * FROM tb_sale WHERE tb_sale.tb_user_id = :userId";
+    $sql = "SELECT  tb_product.name, tb_price_product.price_sale, tb_sale.date, tb_item_sale.quantity
+    FROM tb_sale 
+    INNER JOIN tb_item_sale ON tb_item_sale.tb_sale_id = tb_sale.id
+    INNER JOIN tb_price_product ON tb_price_product.id = tb_item_sale.tb_price_product_id
+    INNER JOIN tb_product ON tb_product.id = tb_price_product.tb_product_id
+    WHERE tb_sale.tb_user_id = :userId";
+
     $req = $this->PDO->prepare($sql);
     $req->bindValue(":userId", $userId);
     $req->execute();
     $sales = $req->fetchAll();
 
     if ($sales) {
-      $items = array();
-      foreach ($sales as $sale) {
-        $sql = "SELECT * FROM tb_item_sale WHERE tb_item_sale.tb_sale_id = :saleId";
-        $req = $this->PDO->prepare($sql);
-        $req->bindValue(":saleId", $sale["id"]);
-        $req->execute();
-        array_push($items, $req->fetch());
-      }
-
-      return $items;
+      return $sales;
     }
     return false;
   }

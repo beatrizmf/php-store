@@ -7,8 +7,8 @@ class SaleController extends CoreController
   public function index()
   {
     $this->loadDAO("SaleDAO");
-    $items = (new SaleDAO)->itemsByUser($_SESSION["userId"]);
-    $this->addData("items", $items);
+    $sales = (new SaleDAO)->itemsByUser($_SESSION["userId"]);
+    $this->addData("sales", $sales);
     $this->loadView("v_purchases");
   }
 }
