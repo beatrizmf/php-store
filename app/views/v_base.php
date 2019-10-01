@@ -1,8 +1,10 @@
 <html>
+
 <head>
   <title>Store</title>
   <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/styles.css" />
 </head>
+
 <body>
   <nav>
     <ul>
@@ -14,11 +16,14 @@
       <li><a href="<?= BASE_URL ?>/sign-out">Logout</a></li>
     </ul>
   </nav>
-  <?php
-  if (isset($_SESSION["message"])) {
-    echo "<p>" . $_SESSION["message"] . "</p>";
-  }
-  require_once PATH_APP . "/views/" . $data["view"] . ".php";
-  ?>
+  <div>
+    <?php
+    if (isset($_SESSION["message"])) {
+      echo "<p>" . $_SESSION["message"] . "</p>";
+    }
+    require_once PATH_APP . "/views/" . $data["view"] . ".php";
+    ?>
+  </div>
 </body>
+
 </html>

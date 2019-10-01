@@ -1,9 +1,105 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  text-rendering: optimizelegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  background: #282a36;
+  color: #f8f8f8;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+}
+body,
+body > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 nav ul {
-  list-style: none;;
+  list-style: none;
   display: flex;
   justify-content: center;
 }
 
 nav ul li {
   margin: 5px;
+}
+
+li {
+  padding: 5px;
+}
+
+a {
+  color: #ffffff;
+}
+
+h1 {
+  margin: 20px;
+}
+
+h2 {
+  margin: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+input,
+button {
+  width: 240px;
+  margin: 5px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+input {
+  background: #f8f8f8;
+}
+
+label {
+  margin-top: 5px;
+}
+
+button {
+  font-weight: bold;
+  color: #f8f8f8;
+  background: #ff79c6;
+  margin-top: 20px;
+}
+
+p {
+  margin: 10px;
+    border-radius: 5px;
+    padding: 20px;
+    background: #ff79c6;
+    width: 400px;
+    text-align: center;
+}
+
+th, td {
+  border: 1px solid #f8f8f8;
+  border-radius: 5px;
+}
+
+th, td {
+  padding: 10px;
+}
+
+th {
+  font-weight: bold;
+  background: #ff79c6;
 }

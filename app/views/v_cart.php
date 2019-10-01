@@ -1,7 +1,7 @@
 <h1>cart</h1>
 
 <?php if (!empty($data["cart"])) : ?>
-  <table border="1">
+  <table>
     <tr>
       <th>name</th>
       <th>price</th>

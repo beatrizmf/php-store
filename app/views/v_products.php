@@ -1,11 +1,11 @@
 <?php if (!empty($data["products"])) : ?>
   <h1>products</h1>
-  <table border="1">
+  <table>
     <tr>
       <th>name</th>
       <th>price</th>
-      <th>quantify</th>
-      <th>🛒</th>
+      <th>quantity</th>
+      <th>🏷️</th>
     </tr>
     <?php foreach ($data["products"] as $product) : ?>
     <?php $urlAddToCart = BASE_URL . "/add-to-cart/?id=" . $product->getId(); ?>

@@ -2,7 +2,7 @@
 
 if (!empty($data["sales"])) : ?>
   <h1>purchases</h1>
-  <table border="1">
+  <table>
     <tr>
       <th>name</th>
       <th>price</th>
